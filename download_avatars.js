@@ -6,6 +6,10 @@ var repoName = process.argv[3];
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
+if ([repoOwner, repoName].includes(undefined)) {
+  throw Error('please include repoOwner AND repoName, otherwise it will not run')
+};
+
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
