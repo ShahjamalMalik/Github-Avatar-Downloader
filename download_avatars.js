@@ -1,6 +1,9 @@
 var request = require('request');
 var fs = require('fs');
 var token = require('./secrets.js')
+var repoOwner = process.argv[2];
+var repoName = process.argv[3];
+
 console.log('Welcome to the GitHub Avatar Downloader!');
 
 function getRepoContributors(repoOwner, repoName, cb) {
