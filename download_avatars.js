@@ -17,6 +17,22 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 }
 
+function downloadImageByURL(url, filePath) {
+
+  request.get(url)               // Note 1
+  .on('error', function (err) {                                   // Note 2
+    throw err;
+  })
+  .on('response', function (response) {                           // Note 3
+    console.log('Response Status Code: ', response.statusCode);
+  })
+  .pipe(fs.createWriteStream(filePath));               // Note 4
+}
+
+
+
+
+
 getRepoContributors("jquery", "jquery", function(err, result) {
   for (var i of result) {
     console.log(i.avatar_url)
